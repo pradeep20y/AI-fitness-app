@@ -38,3 +38,6 @@ public class UserController {
     }
 
 }
+
+// why do we need to use {userId} -> this braces?
+// does @valid works with the setted up validation methods ? or its own ?
