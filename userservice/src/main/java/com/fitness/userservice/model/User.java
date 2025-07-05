@@ -1,4 +1,4 @@
-package com.fitness.model;
+package com.fitness.userservice.model;
 
 import java.time.LocalDateTime;
 

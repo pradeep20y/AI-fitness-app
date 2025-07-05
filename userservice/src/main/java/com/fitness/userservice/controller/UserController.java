@@ -1,4 +1,4 @@
-package com.fitness.controller;
+package com.fitness.userservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fitness.dto.RegisterRequest;
-import com.fitness.dto.UserResponse;
-import com.fitness.service.UserService;
+import com.fitness.userservice.dto.RegisterRequest;
+import com.fitness.userservice.dto.UserResponse;
+import com.fitness.userservice.service.UserService;
 
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;

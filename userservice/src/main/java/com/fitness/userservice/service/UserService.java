@@ -1,12 +1,12 @@
-package com.fitness.service;
+package com.fitness.userservice.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fitness.dto.RegisterRequest;
-import com.fitness.dto.UserResponse;
-import com.fitness.model.User;
-import com.fitness.repository.UserRepository;
+import com.fitness.userservice.dto.RegisterRequest;
+import com.fitness.userservice.dto.UserResponse;
+import com.fitness.userservice.model.User;
+import com.fitness.userservice.repository.UserRepository;
 
 @Service
 public class UserService {
