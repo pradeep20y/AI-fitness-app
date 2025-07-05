@@ -3,6 +3,8 @@ package com.fitness.activityservice.dto;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+import org.bson.types.ObjectId;
+
 import com.fitness.activityservice.model.ActivityType;
 
 import lombok.Data;

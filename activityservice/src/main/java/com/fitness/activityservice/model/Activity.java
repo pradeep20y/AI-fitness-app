@@ -3,6 +3,7 @@ package com.fitness.activityservice.model;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -14,14 +15,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document(collation = "activities")
+@Document(collection = "activity")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Activity {
     @Id
-    private String Id;
+    private ObjectId id;
     private String userId;
     private ActivityType type;
     private Integer duration;

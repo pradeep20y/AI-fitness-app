@@ -1,5 +1,9 @@
 package com.fitness.activityservice.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import com.fitness.activityservice.dto.ActivityRequest;
@@ -32,7 +36,8 @@ public class ActivityService {
 
     private ActivityResponse mapToResponse(Activity activity) {
         ActivityResponse response = new ActivityResponse();
-        response.setId(activity.getId());
+        response.setId(activity.getId().toHexString());
+
         response.setUserId(activity.getUserId());
         response.setType(activity.getType());
         response.setDuration(activity.getDuration());
@@ -43,6 +48,28 @@ public class ActivityService {
         response.setUpdateAt(activity.getUpdateAt());
 
         return response;
+    }
+
+    public List<ActivityResponse> getUserActivities(String userId) {
+        List<Activity> activity = activityRepository.findByUserId(userId);
+        return activity.stream()
+                .map(this::mapToResponse)
+                .collect(Collectors.toList());
+    }
+
+    public ActivityResponse getActivity(String activityId) {
+        ObjectId objectId;
+
+        try {
+            objectId = new ObjectId(activityId);
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Invalid ObjectId format: " + activityId);
+        }
+        Activity activity = activityRepository.findById(objectId)
+                .orElseThrow(() -> new RuntimeException("Activity not found with id: " + objectId));
+        ActivityResponse activityResponse = mapToResponse(activity);
+        return activityResponse;
+
     }
 
 }
