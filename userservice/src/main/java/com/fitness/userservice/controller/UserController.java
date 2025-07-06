@@ -37,6 +37,12 @@ public class UserController {
         return ResponseEntity.ok(userService.register(request));
     }
 
+    @GetMapping("/{userId}/validate")
+    public ResponseEntity<Boolean> validateUser(@PathVariable String userId) {
+        Long userIdLong = Long.parseLong(userId);
+        return ResponseEntity.ok(userService.existByUserId(userIdLong));
+    }
+
 }
 
 // why do we need to use {userId} -> this braces?
