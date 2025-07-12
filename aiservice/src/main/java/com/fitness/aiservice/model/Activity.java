@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 public class Activity {
-    private ObjectId id;
+    private String id;
     private String userId;
     private String type;
     private Integer duration;

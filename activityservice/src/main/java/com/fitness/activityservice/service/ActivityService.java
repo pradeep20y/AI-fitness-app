@@ -3,7 +3,6 @@ package com.fitness.activityservice.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -58,7 +57,7 @@ public class ActivityService {
 
     private ActivityResponse mapToResponse(Activity activity) {
         ActivityResponse response = new ActivityResponse();
-        response.setId(activity.getId().toHexString());
+        response.setId(activity.getId());
 
         response.setUserId(activity.getUserId());
         response.setType(activity.getType());
@@ -80,15 +79,17 @@ public class ActivityService {
     }
 
     public ActivityResponse getActivity(String activityId) {
-        ObjectId objectId;
+        /* ObjectId objectId; */
 
-        try {
-            objectId = new ObjectId(activityId);
-        } catch (IllegalArgumentException e) {
-            throw new RuntimeException("Invalid ObjectId format: " + activityId);
-        }
-        Activity activity = activityRepository.findById(objectId)
-                .orElseThrow(() -> new RuntimeException("Activity not found with id: " + objectId));
+        /*
+         * try {
+         * objectId = new ObjectId(activityId);
+         * } catch (IllegalArgumentException e) {
+         * throw new RuntimeException("Invalid ObjectId format: " + activityId);
+         * }
+         */
+        Activity activity = activityRepository.findById(activityId)
+                .orElseThrow(() -> new RuntimeException("Activity not found with id: " + activityId));
         ActivityResponse activityResponse = mapToResponse(activity);
         return activityResponse;
 
