@@ -9,10 +9,12 @@ import lombok.Data;
 public class Activity {
     private ObjectId id;
     private String userId;
+    private String type;
     private Integer duration;
     private Integer caloriesBurned;
     private LocalDateTime startTime;
     private Map<String, Object> additionalMetrics;
     private LocalDateTime createdAt;
     private LocalDateTime updateAt;
+
 }

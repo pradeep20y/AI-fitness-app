@@ -13,8 +13,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ActivityMessageListener {
 
+    private final ActivityAiService activityAiService;
+
     @RabbitListener(queues = "activity.queue")
     public void processActivity(Activity activity) {
         log.info("Received activity for processing : {}", activity.getId());
+        log.info("Receive AI response :", activityAiService.generateRecommendation(activity));
     }
 }
